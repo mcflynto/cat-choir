@@ -19,7 +19,7 @@ const App = () => {
     audio.play();
   };
 
-  const keys = ["a", "s", "d"];
+  const keys = ["a", "s", "d", "f", "g", "h", "j", "k"];
 
   const cats = Array.from(document.querySelectorAll(".cat"));
   cats.forEach((cat) =>
@@ -37,9 +37,14 @@ const App = () => {
         </div>
       ))}
 
-      <audio data-key="a" src="sounds/cats.mp3"></audio>
-      <audio data-key="s" src="sounds/cats.mp3"></audio>
-      <audio data-key="d" src="sounds/cats.mp3"></audio>
+      <audio data-key="a" src="sounds/c.wav"></audio>
+      <audio data-key="s" src="sounds/d.wav"></audio>
+      <audio data-key="d" src="sounds/e.wav"></audio>
+      <audio data-key="f" src="sounds/f.wav"></audio>
+      <audio data-key="g" src="sounds/g.wav"></audio>
+      <audio data-key="h" src="sounds/a.wav"></audio>
+      <audio data-key="j" src="sounds/b.wav"></audio>
+      <audio data-key="k" src="sounds/c4.wav"></audio>
     </div>
   );
 };
