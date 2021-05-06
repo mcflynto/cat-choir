@@ -1,50 +1,31 @@
 import "./App.css";
+import useSound from "use-sound";
+import useKeyboardInput from "./hooks/useKeyboardInput";
 
 const App = () => {
-  const removeTransition = (e: any) => {
-    if (e.propertyName !== "transform") return;
-    e.target.classList.remove("playing");
-  };
+  const [playC, { isPlaying: isPlayingC }] = useSound("/sounds/c.mp3");
+  const [playD, { isPlaying: isPlayingD }] = useSound("/sounds/d.mp3");
+  const [playE, { isPlaying: isPlayingE }] = useSound("/sounds/e.mp3");
+  const [playF, { isPlaying: isPlayingF }] = useSound("/sounds/f.mp3");
+  const [playG, { isPlaying: isPlayingG }] = useSound("/sounds/g.mp3");
+  const [playA, { isPlaying: isPlayingA }] = useSound("/sounds/a.mp3");
+  const [playB, { isPlaying: isPlayingH }] = useSound("/sounds/b.mp3");
+  const [playC4, { isPlaying: isPlayingC4 }] = useSound("/sounds/c4.mp3");
 
-  const playSound = (e: KeyboardEvent) => {
-    const audio: HTMLAudioElement | null = document.querySelector(
-      `audio[data-key="${e.key}"]`
-    );
-    const cat = document.querySelector(`div[data-key="${e.key}"]`);
-
-    if (!audio || !cat) return;
-
-    cat.classList.add("playing");
-    audio.currentTime = 0;
-    audio.play();
-  };
-
-  const keys = ["a", "s", "d", "f", "g", "h", "j", "k"];
-
-  const cats = Array.from(document.querySelectorAll(".cat"));
-  cats.forEach((cat) =>
-    cat.addEventListener("transitionend", (e) => removeTransition(e))
-  );
-  window.addEventListener("keydown", (e) => playSound(e));
+  useKeyboardInput({
+    1: () => playC(),
+    2: () => playD(),
+    3: () => playE(),
+    4: () => playF(),
+    5: () => playG(),
+    6: () => playA(),
+    7: () => playB(),
+    8: () => playC4(),
+  });
 
   return (
     <div className="App">
-      <h1>Cat Choir</h1>
-
-      {keys.map((n) => (
-        <div className="cat" data-key={n} key={n}>
-          {n}
-        </div>
-      ))}
-
-      <audio data-key="a" src="sounds/c.wav"></audio>
-      <audio data-key="s" src="sounds/d.wav"></audio>
-      <audio data-key="d" src="sounds/e.wav"></audio>
-      <audio data-key="f" src="sounds/f.wav"></audio>
-      <audio data-key="g" src="sounds/g.wav"></audio>
-      <audio data-key="h" src="sounds/a.wav"></audio>
-      <audio data-key="j" src="sounds/b.wav"></audio>
-      <audio data-key="k" src="sounds/c4.wav"></audio>
+      <div style={{ color: isPlayingC ? "green" : "yellow" }}>moin</div>
     </div>
   );
 };
