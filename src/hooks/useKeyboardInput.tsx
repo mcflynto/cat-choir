@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 
-type Keylist = {
+export type Keylist = {
   [key: number]: () => void;
 };
 
