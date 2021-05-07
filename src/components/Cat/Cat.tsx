@@ -1,32 +1,66 @@
+import CatCDefault from "../cats/CatCDefault";
+import CatCSinging from "../cats/CatCSinging";
+import CatDDefault from "../cats/CatDDefault";
+import CatDSinging from "../cats/CatDSinging";
+import CatEDefault from "../cats/CatEDefault";
+import CatESinging from "../cats/CatESinging";
 import "./Cat.css";
+
+type Cats = {
+  [key: string]: {
+    default: JSX.Element;
+    singing: JSX.Element;
+  };
+};
+
+let cats: Cats = {
+  c: {
+    default: <CatCDefault />,
+    singing: <CatCSinging />,
+  },
+  d: {
+    default: <CatDDefault />,
+    singing: <CatDSinging />,
+  },
+  e: {
+    default: <CatEDefault height={300} />,
+    singing: <CatESinging height={300} />,
+  },
+  f: {
+    default: <CatCDefault />,
+    singing: <CatCSinging />,
+  },
+  g: {
+    default: <CatCDefault />,
+    singing: <CatCSinging />,
+  },
+  a: {
+    default: <CatCDefault />,
+    singing: <CatCSinging />,
+  },
+  b: {
+    default: <CatCDefault />,
+    singing: <CatCSinging />,
+  },
+  c4: {
+    default: <CatCDefault />,
+    singing: <CatCSinging />,
+  },
+};
 
 const Cat = ({
   note,
   isPlaying,
-  width,
   onClick,
 }: {
   note: string;
   isPlaying: boolean;
-  width: number;
   onClick: () => void;
 }) => {
   return (
-    <div
-      className="cat"
-      style={{ width: `${width}px` }}
-      onClick={() => onClick()}
-    >
-      <img
-        style={{ display: `${isPlaying ? "none" : "block"}` }}
-        src={`/cats/cat-${note}-default.svg`}
-        alt="A relaxed cat"
-      ></img>
-      <img
-        style={{ display: `${isPlaying ? "block" : "none"}` }}
-        src={`/cats/cat-${note}-singing.svg`}
-        alt="A singing cat"
-      ></img>
+    <div className="cat" onClick={() => onClick()}>
+      {!isPlaying && cats[note].default}
+      {isPlaying && cats[note].singing}
     </div>
   );
 };

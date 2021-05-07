@@ -4,7 +4,7 @@ import Cat from "./components/Cat/Cat";
 import useSoundButNotStuckPlaying from "./hooks/useSoundButNotStuckPlaying";
 import { Keylist } from "./hooks/useKeyboardInput";
 
-const notes = ["c", "d", "e", "f", "g", "a", "b", "c4"];
+export const notes = ["c", "d", "e", "f", "g", "a", "b", "c4"];
 
 const App = () => {
   const sound = useSoundButNotStuckPlaying();
@@ -26,7 +26,6 @@ const App = () => {
               key={i}
               note={n}
               isPlaying={sound[n].isPlaying}
-              width={200}
               onClick={() => sound[n].play()}
             />
           );
